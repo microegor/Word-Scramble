@@ -5,22 +5,24 @@ class Program
 {
     static void Main()
     {
-        string[] words = { "hello", "wonderful", "linq", "beautiful", "world" };
-
+        string[] words = { "hello", "wonderful", "linq", "beautiful", "world", "programming", "computer", "science", "algorithm", "software", "developer", "coding", "debugging", "testing", "database", "network", "security", "web", "application", "mobile", "apple", "banana", "chocolate", "coffee", "diamond", "elephant", "flower", "guitar", "happiness", "island", "jazz", "kangaroo", "lemon", "mountain", "notebook", "ocean", "piano", "queen", "rainbow", "sunshine", "tiger", "umbrella", "victory", "watermelon", "xylophone", "yoga", "zebra", "airplane", "butterfly", "cactus", "dolphin", "elephant", "fireworks", "giraffe", "honey", "ice cream", "jungle", "kiwi", "laptop", "moon", "night", "oasis", "penguin", "quilt", "rain", "sunset", "tulip", "unicorn", "volcano", "waterfall", "xylophone", "yacht", "zeppelin", "astronaut", "ballet", "carnival", "dandelion", "eclipse", "firefly", "garden", "harmony", "island", "jigsaw", "kite", "lighthouse", "mango", "nightingale", "ocean", "paradise", "quicksilver", "rainbow", "sunflower", "thunder", "umbrella", "violet", "water", "xylophone", "yoga", "zebra" };
 
         // Console.WriteLine($"Random word: {randomWord}");
         Console.WriteLine("Добро пожаловать в игру!");
 
         while (true)
         {
+            int attempts = 0;
             string randomWord = RandomWord(words);
             string shuffledWord = Shuffle(randomWord);
             Console.Write("Вам нужно угадать слово из букв: ");
             Console.WriteLine(shuffledWord);
             while (true)
             {
+
                 Console.Write("Введите ваш ответ: ");
                 string answer = Console.ReadLine();
+                attempts++;
                 if (answer == randomWord)
                 {
                     Console.WriteLine("Поздравляю! Вы угадали слово!");
@@ -28,10 +30,21 @@ class Program
                 }
                 else
                 {
+                    if (attempts == 5)
+                    {
+                        Console.WriteLine("Вы проиграли! Правильный ответ: " + randomWord);
+                        break;
+                    }
                     Console.WriteLine("К сожалению, вы не угадали слово. Попробуйте еще раз.");
                 }
+                if (answer == ":q")
+                {
+                    Console.WriteLine("Правильный ответ: " + randomWord);
+                    break;
+                }
             }
-            Console.WriteLine("Хотите сыграть еще раз? (да/нет)");
+            Console.WriteLine($"Количество попыток: {attempts}");
+            Console.Write("Хотите сыграть еще раз? (да/нет): ");
             string playAgain = Console.ReadLine();
             if (playAgain != "да" && playAgain != "yes" && playAgain != "y")
             {

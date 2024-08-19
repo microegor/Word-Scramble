@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Xml;
 
+
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        string[] words = { "hello", "wonderful", "linq", "beautiful", "world", "programming", "computer", "science", "algorithm", "software", "developer", "coding", "debugging", "testing", "database", "network", "security", "web", "application", "mobile", "apple", "banana", "chocolate", "coffee", "diamond", "elephant", "flower", "guitar", "happiness", "island", "jazz", "kangaroo", "lemon", "mountain", "notebook", "ocean", "piano", "queen", "rainbow", "sunshine", "tiger", "umbrella", "victory", "watermelon", "xylophone", "yoga", "zebra", "airplane", "butterfly", "cactus", "dolphin", "elephant", "fireworks", "giraffe", "honey", "ice cream", "jungle", "kiwi", "laptop", "moon", "night", "oasis", "penguin", "quilt", "rain", "sunset", "tulip", "unicorn", "volcano", "waterfall", "xylophone", "yacht", "zeppelin", "astronaut", "ballet", "carnival", "dandelion", "eclipse", "firefly", "garden", "harmony", "island", "jigsaw", "kite", "lighthouse", "mango", "nightingale", "ocean", "paradise", "quicksilver", "rainbow", "sunflower", "thunder", "umbrella", "violet", "water", "xylophone", "yoga", "zebra" };
+        // читаем опциональный аргумент путь к файлу со словами (разделенными разрывом строки)
+        string[] defaultWords = { "hello", "wonderful", "linq", "beautiful", "world", "programming", "computer", "science", "algorithm", "software", "developer", "coding", "debugging", "testing", "database", "network", "security", "web", "application", "mobile", "apple", "banana", "chocolate", "coffee", "diamond", "elephant", "flower", "guitar", "happiness", "island", "jazz", "kangaroo", "lemon", "mountain", "notebook", "ocean", "piano", "queen", "rainbow", "sunshine", "tiger", "umbrella", "victory", "watermelon", "xylophone", "yoga", "zebra", "airplane", "butterfly", "cactus", "dolphin", "elephant", "fireworks", "giraffe", "honey", "ice cream", "jungle", "kiwi", "laptop", "moon", "night", "oasis", "penguin", "quilt", "rain", "sunset", "tulip", "unicorn", "volcano", "waterfall", "xylophone", "yacht", "zeppelin", "astronaut", "ballet", "carnival", "dandelion", "eclipse", "firefly", "garden", "harmony", "island", "jigsaw", "kite", "lighthouse", "mango", "nightingale", "ocean", "paradise", "quicksilver", "rainbow", "sunflower", "thunder", "umbrella", "violet", "water", "xylophone", "yoga", "zebra" };
+        string path = args.Length > 0 ? args[0] : null;
+        string[] words = path != null ? System.IO.File.ReadAllLines(path) : defaultWords;
+
 
         // Console.WriteLine($"Random word: {randomWord}");
         Console.WriteLine("Добро пожаловать в игру!");

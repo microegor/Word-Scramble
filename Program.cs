@@ -55,6 +55,7 @@ class Program
             {
                 break;
             }
+            Console.WriteLine("----------------------------------------");
         }
     }
 
